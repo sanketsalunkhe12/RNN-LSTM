@@ -23,4 +23,12 @@
 
 <p align="justify"> RNN are networks with loops in them, allowing information to persist. RNN connects previous information to the present task. A chunk of the neural network, <b> A, </b> looks at some input <b> Xt </b> and outputs a value <b> ht.</b> A loop allows information to be passed from one step of the network to the next. RNN can be considered as multiple copies of the same network, each passing a message to a successor. This chain-like nature reveals that RNNs are intimately related to sequences and lists types of data i.e time series. </p>
 
-<p align="justify"> When we only need to look at <b> recent information </b> to perform the present task. In such cases, where the gap between the relevant information and the place where it’s needed is small, RNNs can learn to use the past information. But there are also cases where we need more context. It’s entirely possible for the gap between the relevant information and the point where it is needed to become very large. As that gap grows, RNNs become unable to learn to connect the information. In such cases LSTM and GRU comes into picture. </p>
+<p align="justify"> When we only need to look at <b> recent information </b> to perform the present task. In such cases, where the gap between the relevant information and the place where it’s needed is small, RNNs can learn to use the past information. But there are also cases where we need more context. It’s entirely possible for the gap between the relevant information and the point where it is needed to become very large. As that gap grows, RNNs become unable to learn to connect the information. In such cases LSTM and GRU comes into picture. LSTM remember information for long periods of time is practically their default behavior. </p>
+
+<p align="justify"> LSTM has a similar chain-like structure but with different architecture. LSTM has the ability to remove or add information to the cell state, via gates. Gates are a way to optionally let information through. </p>
+
+<p align="center">
+  <img src="https://github.com/sanketsalunkhe12/RNN-LSTM/blob/main/readme_data/Screenshot%20from%202022-08-03%2012-17-19.png">
+</p>
+
+
