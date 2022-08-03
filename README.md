@@ -59,7 +59,7 @@ In given data there are 5 different object types:
     4 = motorcyclist and bicyclist
     5 = others
     
-Out of this information we are using <b> <i> frame_id, object_id, pos_x, pos_y, pos_z </i> </b> for our prediction task.
+Out of this information we are using <b> <i> frame_id, object_id, pos_x, pos_y, heading </i> </b> for our prediction task.
 
 ### Data Preparation:
 
@@ -67,7 +67,13 @@ Out of this information we are using <b> <i> frame_id, object_id, pos_x, pos_y, 
   <img src="https://github.com/sanketsalunkhe12/RNN-LSTM/blob/main/readme_data/data_format.png" width="350">
 </p>
 
-<p align="justify"> A proper input data shape is important for RNN-LSTM model. The input to every LSTM layer must be 3 dimensional i.e. <b> [sample, timesteps, features] </b>            </p>
+<p align="justify"> A proper input data shape is important for RNN-LSTM model. The input to every LSTM layer must be 3 dimensional i.e. <b> [sample, timesteps, features] </b> </p>
+<p align="justify"> Where, <br>
+  &nbsp;&nbsp; <b>samples: </b> no of samples per batch for training <br>
+  &nbsp;&nbsp; <b>tempesteps: </b> no of point of observation in each sample. In our case we are taking past 10 data point.<br>
+  &nbsp;&nbsp; <b>features: </b> dimension of data point in each timestep. In our case we are using 3 features i.e. pos_x, pos_y, heading </p>
+  
+<p align="justify"> Considering above input data structure for input, in our case input dimension in [samples, 10, 3]. </p>
 
 
 ### RNN-LSTM model:
