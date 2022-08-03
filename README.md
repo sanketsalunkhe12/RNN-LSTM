@@ -73,9 +73,36 @@ Out of this information we are using <b> <i> frame_id, object_id, pos_x, pos_y, 
   &nbsp;&nbsp; <b>tempesteps: </b> no of point of observation in each sample. In our case we are taking past 10 data point.<br>
   &nbsp;&nbsp; <b>features: </b> dimension of data point in each timestep. In our case we are using 3 features i.e. pos_x, pos_y, heading </p>
   
-<p align="justify"> Considering above input data structure for input, in our case input dimension in [samples, 10, 3]. </p>
+<p align="justify"> Considering above input data structure for input, in our case input dimension in [samples, 10, 3]. During testing/implmentation we will just give input of shape [1, 10, 3]. There will be only one sample at each time.</p>
+
+<p align="justify"> Along with input we need to create a target from avaiable sequence. For each input sample of 10 timestamp the next 5 timestamp will be a target sample. Based on this we need to create our dataset for RNN-LSTM model. The shape of target will be <b> [samples, pred_timestamp, feature]. </b> In our case the target's shape will be [sample, 5, 3].</p>
+
+<p align="justify"> All this data preparation is carried for both input and target in <b> <i> prep_data() </i> </b> function. It takes each sequence file and gives output in (input, target) format. Also, as we said that, we are only using frame_id, object_id, pos_x, pos_y and heading details in each sequence, for that we need to process our data before giving it input to prep_data() function. </p>
+
+<p align="justify"> First we will sort data for each object based on object_id. It will create a time-series sequence for each traffic object surrounding the ego vehicle. Then in ascending order of frame_id we will take only pos_x, pos_y and heading value for each object. Finally we will normalize the data and convert them into tensor.</p>
 
 
 ### RNN-LSTM model:
+
+To predict the surrounding vehicle position we developed own custom model from scratch. The sequence of layers in model is as follows:
+    
+    Input layer
+    (fc1): Linear(in_features=3, out_features=3, bias=True)
+    (lstm1): LSTM(in_feature = 3, hidden = 30, num_layers=2, batch_first=True)
+    (fc2): Linear(in_features=30, out_features=3, bias=True)
+    (fc3): Linear(in_features=3, out_features=100, bias=True)
+    (relu): ReLU()
+    (fc4): Linear(in_features=100, out_features=100, bias=True)
+    (relu): ReLU()
+    (fc5): Linear(in_features=100, out_features=100, bias=True)
+    (relu): ReLU()
+    (fc6): Linear(in_features=100, out_features=3, bias=True): Output layer
+    
+<p align="justify"> Based on the output of LSTM layer we will either generate a sequence of 5 prediction or only one prediction. LSTM layer gives two output i.e. output, (hn, cn). If we want to  </p> 
+
+### Training:
+
+
+### Testing/Implementation:
 
 
