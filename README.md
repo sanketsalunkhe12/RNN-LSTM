@@ -63,6 +63,12 @@ Out of this information we are using <b> <i> frame_id, object_id, pos_x, pos_y, 
 
 ### Data Preparation:
 
+<p align="center">
+  <img src="https://github.com/sanketsalunkhe12/RNN-LSTM/blob/main/readme_data/data_format.png" width="350">
+</p>
+
+<p align="justify"> A proper input data shape is important for RNN-LSTM model. The input to every LSTM layer must be 3 dimensional i.e. <b> [sample, timesteps, features] </b>            </p>
+
 
 ### RNN-LSTM model:
 
