@@ -31,4 +31,39 @@
   <img src="https://github.com/sanketsalunkhe12/RNN-LSTM/blob/main/readme_data/Screenshot%20from%202022-08-03%2012-17-19.png">
 </p>
 
+### Apollo Dataset:
+
+In this package we are using Apollo Dataset to predict the future positions of surrounding traffic agents based on their past 10/15 positions and heading. We are using RNN-LSTM model whose architecture described below, to predict the position. 
+
+https://apolloscape.auto/trajectory.html
+
+Apolloscape dataset is a large scale trajectory dataset for urban streets. For current trajectory prediction task we are using a trajectory dataset from Apolloscape. Its link given above. Trajectory dataset is divided into train and test dataset. Each txt file in train and test is a 1 min sequence with 2FPS. Each line in file contains:
+
+    frame_id, 
+    object_id, 
+    object_type, 
+    pos_x, 
+    pos_y, 
+    pos_z, 
+    object_length, 
+    object_width, 
+    object_height' 
+    heading
+
+In given data there are 5 different object types:
+    
+    object_type = traffic_agent
+    1 = small_vehicle
+    2 = big_vehicle
+    3 = pedestrian
+    4 = motorcyclist and bicyclist
+    5 = others
+    
+Out of this information we are using <b> <i> frame_id, object_id, pos_x, pos_y, pos_z </i> </b> for our prediction task.
+
+### Data Preparation:
+
+
+### RNN-LSTM model:
+
 
